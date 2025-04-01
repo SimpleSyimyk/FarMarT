@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2xhlxvvi2n1w"]
+
+[ext_resource type="Texture2D" uid="uid://m6o0p5v2tp7h" path="res://sprites/minigames/minigames.png" id="1_6snfu"]
+[ext_resource type="Script" path="res://scripts/minigames/items/cube.gd" id="1_8yhgu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qni21"]
+atlas = ExtResource("1_6snfu")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sdj8w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qni21")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_74pow"]
+radius = 8.0
+
+[node name="cube" type="CharacterBody2D"]
+script = ExtResource("1_8yhgu")
+
+[node name="cube_sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_sdj8w")
+
+[node name="cube_collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_74pow")

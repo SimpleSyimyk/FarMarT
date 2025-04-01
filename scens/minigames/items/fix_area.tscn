@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdsqf1hmv0bix"]
+
+[ext_resource type="Script" path="res://scripts/minigames/items/fix_area.gd" id="1_3bsw3"]
+[ext_resource type="Texture2D" uid="uid://m6o0p5v2tp7h" path="res://sprites/minigames/minigames.png" id="1_8dsmo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fqh8j"]
+atlas = ExtResource("1_8dsmo")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w6r2a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fqh8j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dskc7"]
+radius = 7.0
+height = 48.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4v3al"]
+atlas = ExtResource("1_8dsmo")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cg5i3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4v3al")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qd4p8"]
+radius = 2.0
+height = 14.0
+
+[node name="fix_area" type="Node2D"]
+script = ExtResource("1_3bsw3")
+
+[node name="dafault_area" type="Area2D" parent="."]
+
+[node name="area_sprite" type="AnimatedSprite2D" parent="dafault_area"]
+position = Vector2(0, -8)
+scale = Vector2(3, 1)
+sprite_frames = SubResource("SpriteFrames_w6r2a")
+
+[node name="area_collision" type="CollisionShape2D" parent="dafault_area"]
+position = Vector2(0, -8)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dskc7")
+
+[node name="better_area" type="Area2D" parent="."]
+
+[node name="area_sprite" type="AnimatedSprite2D" parent="better_area"]
+position = Vector2(0, -8)
+scale = Vector2(0.25, 1)
+sprite_frames = SubResource("SpriteFrames_cg5i3")
+
+[node name="area_collision" type="CollisionShape2D" parent="better_area"]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_qd4p8")
+
+[connection signal="body_entered" from="dafault_area" to="." method="_on_dafault_area_body_entered"]
+[connection signal="body_exited" from="dafault_area" to="." method="_on_dafault_area_body_exited"]
+[connection signal="body_entered" from="better_area" to="." method="_on_better_area_body_entered"]
+[connection signal="body_exited" from="better_area" to="." method="_on_better_area_body_exited"]

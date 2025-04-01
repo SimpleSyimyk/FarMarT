@@ -1,0 +1,103 @@
+[gd_scene load_steps=12 format=3 uid="uid://w1d84yjrht8n"]
+
+[ext_resource type="Script" path="res://scripts/minigames/items/buttons.gd" id="1_ccced"]
+[ext_resource type="Texture2D" uid="uid://m6o0p5v2tp7h" path="res://sprites/minigames/minigames.png" id="1_rbn0q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_blkar"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66g0c"]
+atlas = ExtResource("1_rbn0q")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7u3l"]
+atlas = ExtResource("1_rbn0q")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2snpd"]
+atlas = ExtResource("1_rbn0q")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3r65"]
+atlas = ExtResource("1_rbn0q")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ejrl0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66g0c")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7u3l")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2snpd")
+}],
+"loop": true,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3r65")
+}],
+"loop": true,
+"name": &"4",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3u1t"]
+atlas = ExtResource("1_rbn0q")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rif57"]
+atlas = ExtResource("1_rbn0q")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ojj7d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3u1t")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rif57")
+}],
+"loop": true,
+"name": &"static",
+"speed": 5.0
+}]
+
+[node name="CharacterBody2D" type="TouchScreenButton"]
+shape = SubResource("RectangleShape2D_blkar")
+passby_press = true
+script = ExtResource("1_ccced")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ejrl0")
+animation = &"4"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ojj7d")
+animation = &"static"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(20, 20)
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

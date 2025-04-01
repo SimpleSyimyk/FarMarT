@@ -1,0 +1,121 @@
+[gd_scene load_steps=17 format=3 uid="uid://1kmp2udgodkl"]
+
+[ext_resource type="Script" path="res://scripts/characters/cow.gd" id="1_m1yr8"]
+[ext_resource type="Texture2D" uid="uid://34g1uqf1r3l1" path="res://sprites/character/idle_cow.png" id="1_tolg3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evjrt"]
+atlas = ExtResource("1_tolg3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n31o"]
+atlas = ExtResource("1_tolg3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcaqg"]
+atlas = ExtResource("1_tolg3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynauf"]
+atlas = ExtResource("1_tolg3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6vxb"]
+atlas = ExtResource("1_tolg3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbemj"]
+atlas = ExtResource("1_tolg3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dp3n"]
+atlas = ExtResource("1_tolg3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4w4t"]
+atlas = ExtResource("1_tolg3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh1bh"]
+atlas = ExtResource("1_tolg3")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_suxds"]
+atlas = ExtResource("1_tolg3")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncwsu"]
+atlas = ExtResource("1_tolg3")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ow5xg"]
+atlas = ExtResource("1_tolg3")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fefwg"]
+atlas = ExtResource("1_tolg3")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k1c5m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evjrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n31o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcaqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynauf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6vxb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbemj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dp3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4w4t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh1bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_suxds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncwsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ow5xg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fefwg")
+}],
+"loop": true,
+"name": &"idle2",
+"speed": 5.0
+}]
+
+[node name="cow" type="Node2D"]
+script = ExtResource("1_m1yr8")
+
+[node name="cow_animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -11)
+sprite_frames = SubResource("SpriteFrames_k1c5m")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true

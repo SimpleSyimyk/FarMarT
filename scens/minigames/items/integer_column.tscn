@@ -1,0 +1,104 @@
+[gd_scene load_steps=10 format=3 uid="uid://eg0i4kncto1e"]
+
+[ext_resource type="Script" path="res://scripts/minigames/items/integer_column.gd" id="1_p3blf"]
+[ext_resource type="Texture2D" uid="uid://m6o0p5v2tp7h" path="res://sprites/minigames/minigames.png" id="1_rpt6u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukxjm"]
+atlas = ExtResource("1_rpt6u")
+region = Rect2(80, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uk2r"]
+atlas = ExtResource("1_rpt6u")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qh3s"]
+atlas = ExtResource("1_rpt6u")
+region = Rect2(32, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx7pt"]
+atlas = ExtResource("1_rpt6u")
+region = Rect2(64, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7go13"]
+atlas = ExtResource("1_rpt6u")
+region = Rect2(48, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yn4a8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukxjm")
+}],
+"loop": false,
+"name": &"four",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uk2r")
+}],
+"loop": false,
+"name": &"no_animation",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qh3s")
+}],
+"loop": false,
+"name": &"one",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx7pt")
+}],
+"loop": false,
+"name": &"three",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7go13")
+}],
+"loop": false,
+"name": &"two",
+"speed": 1.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_syvpj"]
+radius = 7.0
+height = 62.0
+
+[node name="integer_column" type="CharacterBody2D"]
+script = ExtResource("1_p3blf")
+
+[node name="rows" type="Node2D" parent="."]
+position = Vector2(8, 8)
+
+[node name="row_sprite1" type="AnimatedSprite2D" parent="rows"]
+sprite_frames = SubResource("SpriteFrames_yn4a8")
+animation = &"no_animation"
+autoplay = "no_animation"
+
+[node name="row_sprite2" type="AnimatedSprite2D" parent="rows"]
+position = Vector2(0, 16)
+sprite_frames = SubResource("SpriteFrames_yn4a8")
+animation = &"no_animation"
+autoplay = "no_animation"
+
+[node name="row_sprite3" type="AnimatedSprite2D" parent="rows"]
+position = Vector2(0, 32)
+sprite_frames = SubResource("SpriteFrames_yn4a8")
+animation = &"no_animation"
+autoplay = "no_animation"
+
+[node name="row_sprite4" type="AnimatedSprite2D" parent="rows"]
+position = Vector2(0, 48)
+sprite_frames = SubResource("SpriteFrames_yn4a8")
+animation = &"two"
+autoplay = "no_animation"
+
+[node name="column_collision" type="CollisionShape2D" parent="."]
+position = Vector2(8, 32)
+shape = SubResource("CapsuleShape2D_syvpj")

@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://cv6ancac5qvuv"]
+
+[ext_resource type="Script" path="res://scripts/minigames/items/arrow.gd" id="1_7gyyd"]
+[ext_resource type="Texture2D" uid="uid://m6o0p5v2tp7h" path="res://sprites/minigames/minigames.png" id="1_ntbnp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agaji"]
+atlas = ExtResource("1_ntbnp")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05v38"]
+atlas = ExtResource("1_ntbnp")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocyfl"]
+atlas = ExtResource("1_ntbnp")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vy50"]
+atlas = ExtResource("1_ntbnp")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pitnw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agaji")
+}],
+"loop": true,
+"name": &"arrow_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05v38")
+}],
+"loop": true,
+"name": &"arrow_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocyfl")
+}],
+"loop": true,
+"name": &"arrow_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4vy50")
+}],
+"loop": true,
+"name": &"arrow_up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gq1dw"]
+radius = 8.0
+
+[node name="arrow" type="CharacterBody2D"]
+script = ExtResource("1_7gyyd")
+
+[node name="arrow_sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-8, 8)
+sprite_frames = SubResource("SpriteFrames_pitnw")
+animation = &"arrow_left"
+
+[node name="arrow_collision" type="CollisionShape2D" parent="."]
+position = Vector2(-8, 8)
+shape = SubResource("CircleShape2D_gq1dw")
